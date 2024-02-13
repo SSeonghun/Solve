@@ -1,16 +1,20 @@
 t = int(input())
-for x in range(t):
+
+for x in range(1,t+1):
     n = int(input())
-    arr = [0]*5001
+    arr = [list(map(int, input().split())) for _ in range(n)]
+    p = int(input())
+    arr2 = [int(input()) for _ in range(p)]
+    ans = [0]*5001
 
     for i in range(n):
-        a, b = map(int, input().split())
-        for j in range(a,b+1):
-            arr[j] += 1
-    p = int(input())
-    busstop = [int(input()) for i in range(p)]
+        for j in range(arr[i][0]-1, arr[i][1]):
+            ans[j]+=1
 
-    print(f'#{x + 1}', end=' ')
-    for i in busstop:
-        print(arr[i], end=' ')
+    print(f'#{x}', end=' ')
+
+    for i in range(p):
+        for j in range(5001):
+            if arr2[i] == j:
+                print(ans[j-1], end=' ')
     print()
