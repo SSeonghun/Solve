@@ -1,9 +1,8 @@
-n = int(input())
-
-arr = []
-for i in range(n):
-    arr.append(int(input()))
-
-
-for i in sorted(arr):
+import sys
+n = int(sys.stdin.readline())
+num=[]
+for i in range(n) :
+    num.append(int(sys.stdin.readline()))
+num.sort()
+for i in num :
     print(i)
