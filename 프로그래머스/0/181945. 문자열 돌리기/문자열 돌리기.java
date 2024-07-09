@@ -6,8 +6,8 @@ public class Solution {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String st = br.readLine();
         
-        for (int i=0; i<st.length(); i++) {
-            System.out.println(st.charAt(i));
+        for (char c : st.toCharArray()) {
+            System.out.println(c);
         }
     }
 }
