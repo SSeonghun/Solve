@@ -1,22 +1,23 @@
-import java.util.*;
-
-class Solution {
-    public int solution(String binomial) {
-        int answer = 0;
-        
-        StringTokenizer st = new StringTokenizer(binomial);
-        int a = Integer.parseInt(st.nextToken());
-        String op = st.nextToken();
-        int b = Integer.parseInt(st.nextToken());
-        
-        if (op.equals("+")) {
-            answer = a + b;
-        } else if (op.equals("-")) {
-            answer = a - b;
-        } else if (op.equals("*")) {
-            answer = a * b;
+public class Solution {
+    public static int solution(String binomial) {
+        String[] parts = binomial.split(" ");
+        int a = Integer.parseInt(parts[0]);
+        int b = Integer.parseInt(parts[2]);
+        char op = parts[1].charAt(0);
+        int result = 0;
+        switch (op) {
+            case '+':
+                result = a + b;
+                break;
+            case '-':
+                result = a - b;
+                break;
+            case '*':
+                result = a * b;
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid operator: " + op);
         }
-        
-        return answer;
+        return result;
     }
 }
