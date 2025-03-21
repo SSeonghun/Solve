@@ -4,7 +4,6 @@ class Solution {
     
     static boolean[] visited;
     static String[] answer;
-    static boolean flag = false;;
     
     public String[] solution(String[][] tickets) {
         int n = tickets.length;
@@ -21,17 +20,13 @@ class Solution {
         return answer;
     }
     
-    public static void dfs(String[][] tickets, int idx, int depth) {
+    public static boolean dfs(String[][] tickets, int idx, int depth) {
         
-        if (flag) {
-            return;
-        }
         
         System.out.println(depth + " " + idx);
         
         if (depth == tickets.length+1) {
-            flag = true;
-            return;
+            return true;
         }
         
         if (depth==1) {
@@ -39,10 +34,10 @@ class Solution {
                 if (tickets[i][0].equals("ICN")) {
                     visited[i] = true;
                     answer[depth] = tickets[i][1];
-                    dfs(tickets, i, depth+1);
-                    if (flag) {
-                        return;
+                    if (dfs(tickets, i, depth+1)) {
+                        return true;
                     }
+
                     visited[i] = false;
                 }
             }
@@ -52,14 +47,13 @@ class Solution {
                 if (visited[i]==false && tickets[i][0].equals(tickets[idx][1])) {
                     visited[i] = true;
                     answer[depth] = tickets[i][1];
-                    dfs(tickets, i, depth+1);
-                    if (flag) {
-                        return;
+                    if (dfs(tickets, i, depth+1)) {
+                        return true;
                     }
                     visited[i] = false;
                 }
             }
         }
-        
+        return false;
     }
 }
